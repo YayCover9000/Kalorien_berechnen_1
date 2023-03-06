@@ -21,33 +21,38 @@ public class berechnungKalorien {
         int pommesGramm = 0;
         int traubenGramm = 0;
         boolean checkNotNegativ;
+        boolean exit = false;
+        final int ENDE = 3;
+        int a = 0;
 
-        checkNotNegativ = berechnungKalorien.notNegativ(input);
-        if (checkNotNegativ) {
-            milchschokoladeGramm = input;
-        }
-        else {
-            System.out.println("negativer Wert erfasst");
-            scanner.close();
-        }
+        while (!exit && a < ENDE) {
+            checkNotNegativ = berechnungKalorien.notNegativ(input);
+            if (checkNotNegativ) {
+                milchschokoladeGramm = input;
+            }
+            else {
+                System.out.println("negativer Wert erfasst");
+                scanner.close();
+            }
 
-        checkNotNegativ = berechnungKalorien.notNegativ(input);
-        if (checkNotNegativ) {
-            pommesGramm = input;
+            checkNotNegativ = berechnungKalorien.notNegativ(input);
+            if (checkNotNegativ) {
+                pommesGramm = input;
+            }
+            else {
+                System.out.println("negativer Wert erfasst");
+                scanner.close();
+            }
+            checkNotNegativ = berechnungKalorien.notNegativ(input);
+            if (checkNotNegativ) {
+                traubenGramm = input;
+            }
+            else {
+                System.out.println("negativer Wert erfasst");
+                scanner.close();
+            }
+                a++;
         }
-        else {
-            System.out.println("negativer Wert erfasst");
-            scanner.close();
-        }
-        checkNotNegativ = berechnungKalorien.notNegativ(input);
-        if (checkNotNegativ) {
-            traubenGramm = input;
-        }
-        else {
-            System.out.println("negativer Wert erfasst");
-            scanner.close();
-        }
-
         kalorienMilchschokolade = MILCHSCHOKOLADE * milchschokoladeGramm;
         kalorienTrauben = TRAUBEN * traubenGramm;
         kalorienPommes = POMMES_FRITTES * pommesGramm;
@@ -55,6 +60,7 @@ public class berechnungKalorien {
         gesamtkalorien = kalorienTrauben + kalorienPommes + kalorienMilchschokolade;
         berechnungKalorien.ausgeben(gesamtkalorien);
     }
+
     // Checks nicht negativ
     public static boolean notNegativ (int input) {
         return input > 0 && input < 1000;
